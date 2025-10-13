@@ -4,7 +4,7 @@
   "height": 800,
   "projection": {"type": "mercator"},
   "data": {
-    "url": "https://raw.githubusercontent.com/KYLoong/FIT3179-DV2/main/malaysia_topojson.json",
+    "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/malaysia_topojson.json",
     "format": {"type": "topojson", "feature": "states"}
   },
   "transform": [
@@ -12,7 +12,7 @@
       "lookup": "properties.name",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/KYLoong/FIT3179-DV2/main/data/population_state.csv" 
+          "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/population_state.csv" 
         },
         "key": "state",
         "fields": ["population"]
