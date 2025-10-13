@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 800,
+  "projection": {"type": "mercator"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/KYLoong/FIT3179-DV2/main/malaysia_topojson.json",
+    "format": {"type": "topojson", "feature": "states"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/KYLoong/FIT3179-DV2/main/data/population_state.csv" 
+        },
+        "key": "state",
+        "fields": ["population"]
+      }
+    }
+  ],
+  "mark": {"type": "geoshape", "stroke": "white"},
+  "encoding": {
+    "color": {
+      "field": "population",
+      "type": "quantitative",
+      "title": "Population",
+      "scale": {"scheme": "blues"}
+    },
+    "tooltip": [
+      {"field": "properties.name", "title": "State"},
+      {"field": "population", "title": "Population"}
+    ]
+  },
+  "config": {"view": {"stroke": "transparent"}}
+}
