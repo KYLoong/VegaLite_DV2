@@ -32,7 +32,7 @@
       "field": "population_density",
       "type": "quantitative",
       "title": "Population Density (people per km²)",
-      "scale": {"scheme": "reds"}
+      "scale": {"scheme": "blues"}
     },
     "tooltip": [
       {"field": "properties.name", "type": "nominal", "title": "State"},
