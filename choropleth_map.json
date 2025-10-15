@@ -10,16 +10,37 @@
       "feature": "ne_10m_admin_1_states_provinces"
     }
   },
+  "transform": [
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/population_by_state_2025_normalised.csv"
+        },
+        "key": "state",
+        "fields": ["population_density"]
+      }
+    }
+  ],
   "mark": {
     "type": "geoshape",
     "stroke": "white",
-    "strokeWidth": 0.5,
-    "fill": "#6baed6"
+    "strokeWidth": 0.5
   },
   "encoding": {
+    "color": {
+      "field": "population_density",
+      "type": "quantitative",
+      "title": "Population Density (people per km²)",
+      "scale": {"scheme": "reds"}
+    },
     "tooltip": [
       {"field": "properties.name", "type": "nominal", "title": "State"},
-      {"field": "properties.region", "type": "nominal", "title": "Region"}
+      {"field": "population_density", "type": "quantitative", "title": "Population Density (people/km²)", "format": ".2f"}
     ]
+  },
+  "config": {
+    "view": {"stroke": "transparent"},
+    "background": "#f9f9f9"
   }
 }
