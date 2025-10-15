@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Population by Ethnicity in Malaysia (2016–2025)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/ethnicity_population_2016_2025.csv"
+  },
+  "transform": [
+    {"filter": "datum.year == selectedYear"}
+  ],
+  "params": [
+    {
+      "name": "selectedYear",
+      "value": 2025,
+      "bind": {
+        "input": "range",
+        "min": 2016,
+        "max": 2025,
+        "step": 1,
+        "name": "Select Year: "
+      }
+    }
+  ],
+  "mark": {"type": "arc", "innerRadius": 100},
+  "encoding": {
+    "theta": {"field": "population", "type": "quantitative"},
+    "color": {"field": "ethnicity", "type": "nominal"},
+    "tooltip": [
+      {"field": "ethnicity", "type": "nominal"},
+      {"field": "population", "type": "quantitative"}
+    ]
+  },
+  "view": {"stroke": null}
+}
