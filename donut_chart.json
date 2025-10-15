@@ -4,9 +4,6 @@
   "data": {
     "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/ethnicity_population_2016_2025.csv"
   },
-  "transform": [
-    {"filter": "datum.year == selectedYear"}
-  ],
   "params": [
     {
       "name": "selectedYear",
@@ -20,13 +17,17 @@
       }
     }
   ],
+  "transform": [
+    {"filter": "datum.year == selectedYear"}
+  ],
   "mark": {"type": "arc", "innerRadius": 100},
   "encoding": {
     "theta": {"field": "population", "type": "quantitative"},
     "color": {"field": "ethnicity", "type": "nominal"},
     "tooltip": [
       {"field": "ethnicity", "type": "nominal"},
-      {"field": "population", "type": "quantitative"}
+      {"field": "population", "type": "quantitative"},
+      {"field": "year", "type": "quantitative"}
     ]
   },
   "view": {"stroke": null}
