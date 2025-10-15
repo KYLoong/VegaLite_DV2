@@ -20,10 +20,14 @@
   "transform": [
     {"filter": "datum.year == selectedYear"}
   ],
-  "mark": {"type": "arc", "innerRadius": 100},
+  "mark": {"type": "arc", "innerRadius": 125},
   "encoding": {
     "theta": {"field": "population", "type": "quantitative"},
-    "color": {"field": "ethnicity", "type": "nominal"},
+    "color": {
+      "field": "ethnicity",
+      "type": "nominal",
+      "sort": ["Malay", "Chinese", "Other Bumiputera", "Non Citizens", "Indian", "Other Citizens"]
+    },
     "tooltip": [
       {"field": "ethnicity", "type": "nominal"},
       {"field": "population", "type": "quantitative"},

@@ -30,8 +30,18 @@
   </div>
 
   <script type="text/javascript">
-    vegaEmbed('#map', 'choropleth_map.json');
-
+    vegaEmbed('#map', 'choropleth_map.json', {"actions": false});
   </script>
+
+  <div class="chart-container">
+    <h2>Donut Chart: Population by Ethnicity (Filter by Year)</h2>
+    <div id="donut"></div>
+  </div>
+  
+  <script type="text/javascript">
+    vegaEmbed('#donut', 'donut_chart.json', {"actions": false});
+  </script>
+
+
 </body>
 </html>
