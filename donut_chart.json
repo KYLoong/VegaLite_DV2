@@ -26,8 +26,9 @@
     "color": {
       "field": "ethnicity",
       "type": "nominal",
-      "sort": ["Malay", "Chinese", "Other Bumiputera", "Non Citizens", "Indian", "Other Citizens"]
+      "sort": {"field": "population", "order": "descending"}
     },
+    "order": {"field": "population", "order": "descending"},
     "tooltip": [
       {"field": "ethnicity", "type": "nominal"},
       {"field": "population", "type": "quantitative"},

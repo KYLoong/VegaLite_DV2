@@ -1,0 +1,38 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Population Trend by Ethnicity in Malaysia (2016–2025)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/ethnicity_population_2016_2025.csv"
+  },
+  "mark": {"type": "area", "interpolate": "monotone"},
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "population",
+      "type": "quantitative",
+      "stack": "zero",
+      "title": "Population (thousands)"
+    },
+    "color": {
+      "field": "ethnicity",
+      "type": "nominal",
+      "legend": {"title": "Ethnicity"},
+      "sort": ["Malay", "Chinese", "Other Bumiputera", "Non Citizens", "Indian", "Other Citizens"]
+    },
+    "order": {
+      "field": "ethnicity",
+      "type": "nominal",
+      "sort": ["Malay", "Chinese", "Other Bumiputera", "Non Citizens", "Indian", "Other Citizens"]
+    },
+    "tooltip": [
+      {"field": "year", "type": "ordinal"},
+      {"field": "ethnicity", "type": "nominal"},
+      {"field": "population", "type": "quantitative"}
+    ]
+  },
+  "view": {"stroke": null}
+}
