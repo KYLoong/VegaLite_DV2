@@ -1,6 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Population by Ethnicity in Malaysia (2016–2025)",
   "data": {
     "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/ethnicity_population_2016_2025.csv"
   },
@@ -9,31 +8,51 @@
       "name": "selectedYear",
       "value": 2025,
       "bind": {
-        "input": "range",
-        "min": 2016,
-        "max": 2025,
-        "step": 1,
-        "name": "Select Year: "
+        "input": "select",
+        "options": [
+          2016, 2017, 2018, 2019, 2020,
+          2021, 2022, 2023, 2024, 2025
+        ],
+        "name": "Select Year: " 
       }
     }
   ],
   "transform": [
-    {"filter": "datum.year == selectedYear"}
+    { "filter": "datum.year == selectedYear" }
   ],
-  "mark": {"type": "arc", "innerRadius": 125},
+  "mark": {
+    "type": "arc",
+    "innerRadius": 150
+  },
   "encoding": {
-    "theta": {"field": "population", "type": "quantitative"},
+    "theta": { "field": "population", "type": "quantitative" },
     "color": {
       "field": "ethnicity",
       "type": "nominal",
-      "sort": {"field": "population", "order": "descending"}
+      "sort": { "field": "population", "order": "descending" },
+      "legend": {
+        "orient": "right",
+        "title": "Ethnicity",
+        "offset": 30
+      }
     },
-    "order": {"field": "population", "order": "descending"},
+    "order": { "field": "population", "order": "descending" },
     "tooltip": [
-      {"field": "ethnicity", "type": "nominal"},
-      {"field": "population", "type": "quantitative"},
-      {"field": "year", "type": "quantitative"}
+      { "field": "ethnicity", "type": "nominal" },
+      { "field": "population", "type": "quantitative" },
+      { "field": "year", "type": "quantitative" }
     ]
   },
-  "view": {"stroke": null}
+  "config": {
+    "background": null,
+    "view": { "stroke": null },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "symbolSize": 150
+    }
+  },   
+  "width": 600,
+  "height": 400,
+  "autosize": { "type": "fit", "contains": "padding" }
 }

@@ -34,5 +34,8 @@
       {"field": "population", "type": "quantitative"}
     ]
   },
-  "view": {"stroke": null}
+  "config": {
+    "background": null,
+    "view": {"stroke": null}
+  }
 }

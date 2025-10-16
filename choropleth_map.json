@@ -31,7 +31,7 @@
     "color": {
       "field": "population_density",
       "type": "quantitative",
-      "title": "Population Density (people per km²)",
+      "title": "Population Density",
       "scale": {"type": "log","scheme": "blues"}
     },
     "tooltip": [

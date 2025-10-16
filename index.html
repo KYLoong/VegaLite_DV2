@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -42,6 +42,89 @@
     vegaEmbed('#donut', 'donut_chart.json', {"actions": false});
   </script>
 
+  <div class="chart-container">
+    <h2>Population Trend by Ethnicity (2016–2025)</h2>
+    <div id="trend"></div>
+  </div>
+
+  <script type="text/javascript">
+    vegaEmbed('#trend', 'stacked_area_chart.json', { actions: false });
+  </script>
+
 
 </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Malaysia Population Dashboard (2025)</title>
+
+    <!-- Vega Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <h1>Malaysia Population</h1>
+
+    <div class="chart-section">
+      <h2>Population Density by State</h2>
+      <div class="chart-row">
+        <div class="chart">
+          <div id="map"></div>
+        </div>
+        <div class="description">
+          <p>
+            <strong>Kuala Lumpur</strong> stands out as the most densely populated region
+            as being the smallest in land area, it has the highest population concentration.  
+            <strong>Pulau Pinang</strong> follows next, with a high density driven by its urban development and limited land.  
+            States such as <strong>Selangor</strong> and <strong>Putrajaya</strong> also show significant density due to their economic and administrative importance.  
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div style="height: 200px;"></div>
+
+    <div class="chart-section">
+      <h2>Population by Ethnicity in Malaysia (2016–2025)</h2>
+      <div class="chart-row">
+        <div class="chart">
+          <div id="donut"></div>
+        </div>
+        <div class="description">
+          <p>
+            <strong>Malays</strong> have been the <strong>largest</strong> contributor to the Malaysia's population. It <strong>over half</strong> of the population over the years.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <h2>Population Trend by Ethnicity (2016–2025)</h2>
+      <div class="chart-row">
+        <div class="chart">
+          <div id="trend"></div>
+        </div>
+        <div class="description">
+          <p>
+            The Malaysia's population <strong>increase</strong> over the time. The <strong>Malay population increase steadily</strong> while the <strong>other ethnicity</strong> remained <strong>relatively stable</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Vega Embeds ===== -->
+    <script type="text/javascript">
+      vegaEmbed("#map", "choropleth_map.json", { actions: false });
+      vegaEmbed("#donut", "donut_chart.json", { actions: false });
+      vegaEmbed("#trend", "stacked_area_chart.json", { actions: false });
+    </script>
+  </body>
 </html>
