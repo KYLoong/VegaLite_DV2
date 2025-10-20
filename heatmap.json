@@ -8,12 +8,12 @@
   },
   "mark": "rect",
   "encoding": {
-    "x": {"field": "state", "type": "ordinal", "axis": {"title": "State"}},
-    "y": {"field": "year", "type": "ordinal", "axis": {"title": "Year"}},
+    "x": {"field": "year", "type": "ordinal", "axis": {"title": "Year"}}, 
+    "y": {"field": "state", "type": "ordinal", "axis": {"title": "State"}},
     "color": {
       "field": "natural_increase",
       "type": "quantitative",
-      "scale": {"scheme": "greens"},
+      "scale": {"scheme": "reds"},
       "legend": {"title": "Natural Increase"}
     },
     "tooltip": [
