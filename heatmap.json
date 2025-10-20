@@ -13,7 +13,7 @@
     "color": {
       "field": "natural_increase_rate",
       "type": "quantitative",
-      "scale": {"scheme": "greens"},
+      "scale": {"scheme": "reds"},
       "legend": {"title": "Natural Increase Rate (%)"}
     },
     "tooltip": [
