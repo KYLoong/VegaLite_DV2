@@ -73,7 +73,8 @@
   ],
   "config": {
     "view": {"stroke": "transparent"},
-    "axis": {"grid": false}
+    "axis": {"grid": false},
+    "background": null
   }
 }
 

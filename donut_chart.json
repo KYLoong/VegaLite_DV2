@@ -9,49 +9,110 @@
       "value": 2025,
       "bind": {
         "input": "select",
-        "options": [
-          2016, 2017, 2018, 2019, 2020,
-          2021, 2022, 2023, 2024, 2025
-        ],
-        "name": "Select Year: " 
+        "options": [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+        "name": "Select Year: "
       }
     }
   ],
   "transform": [
-    { "filter": "datum.year == selectedYear" }
+    { "filter": "datum.year == selectedYear" },
+    {
+      "joinaggregate": [
+        { "op": "sum", "field": "population", "as": "total_population" }
+      ]
+    },
+    {
+      "calculate": "(datum.population / datum.total_population) * 100",
+      "as": "percentage"
+    }
   ],
-  "mark": {
-    "type": "arc",
-    "innerRadius": 100
-  },
-  "encoding": {
-    "theta": { "field": "population", "type": "quantitative" },
-    "color": {
-      "field": "ethnicity",
-      "type": "nominal",
-      "sort": { "field": "population", "order": "descending" },
-      "legend": {
-        "orient": "right",
-        "title": "Ethnicity",
-        "offset": 30
+  "layer": [
+    {
+      "mark": { "type": "arc", "innerRadius": 100 },
+      "encoding": {
+        "theta": { "field": "population", "type": "quantitative" },
+        "color": {
+          "field": "ethnicity",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Malay",
+              "Chinese",
+              "Other Bumiputera",
+              "Non Citizens",
+              "Indian",
+              "Other Citizens"
+            ],
+            "range": [
+              "#0072B2",
+              "#D55E00",
+              "#009E73",
+              "#E69F00",
+              "#CC79A7",
+              "#56B4E9"
+            ]
+          },
+          "legend": {
+            "orient": "right",
+            "title": "Ethnicity",
+            "offset": 30
+          }
+        },
+        "order": { "field": "population"},
+        "tooltip": [
+          { "field": "ethnicity", "type": "nominal", "title": "Ethnicity" },
+          { "field": "population", "type": "quantitative", "format": ",", "title": "Population" },
+          { "field": "percentage", "type": "quantitative", "format": ".1f", "title": "Percentage (%)"},
+          { "field": "year", "type": "quantitative", "title": "Year" }
+        ]
       }
     },
-    "order": { "field": "population", "order": "descending" },
-    "tooltip": [
-      { "field": "ethnicity", "type": "nominal" },
-      { "field": "population", "type": "quantitative" },
-      { "field": "year", "type": "quantitative" }
-    ]
-  },
+    {
+      "transform": [
+        { "aggregate": [{ "op": "sum", "field": "population", "as": "total" }] },
+        { "calculate": "format(datum.total, ',.0f') + 'k'", "as": "total_k" }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "text",
+            "text": "Total Population",
+            "fontSize": 16,
+            "fontWeight": "bold",
+            "align": "center",
+            "baseline": "bottom",
+            "dy": -10,
+            "color": "#080000fd"
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 20,
+            "fontWeight": "bold",
+            "align": "center",
+            "baseline": "top",
+            "dy": 10,
+            "color": "#0072B2"
+          },
+          "encoding": {
+            "text": { "field": "total_k", "type": "nominal" }
+          }
+        }
+      ]
+    }
+  ],
   "config": {
     "background": null,
     "view": { "stroke": null },
     "legend": {
       "labelFontSize": 12,
       "titleFontSize": 13,
-      "symbolSize": 150
+      "symbolSize": 150,
+      "labelColor": "#333333",
+      "titleColor": "#000000"
     }
-  },   
+  },
   "width": 600,
   "height": 400,
   "autosize": { "type": "fit", "contains": "padding" }

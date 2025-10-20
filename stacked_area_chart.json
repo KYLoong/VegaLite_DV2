@@ -4,38 +4,108 @@
   "data": {
     "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/ethnicity_population_2016_2025.csv"
   },
-  "mark": {"type": "area", "interpolate": "monotone"},
-  "encoding": {
-    "x": {
-      "field": "year",
-      "type": "ordinal",
-      "title": "Year"
+  "layer": [
+    {
+      "mark": {"type": "area", "interpolate": "monotone"},
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal", "title": "Year"},
+        "y": {
+          "field": "population",
+          "type": "quantitative",
+          "stack": "zero",
+          "title": "Population",
+          "axis": {"labelExpr": "format(datum.value, ',') + 'k'"}
+        },
+        "color": {
+          "field": "ethnicity",
+          "type": "nominal",
+          "legend": {"title": "Ethnicity"},
+          "scale": {
+            "domain": [
+              "Malay",
+              "Chinese",
+              "Other Bumiputera",
+              "Non Citizens",
+              "Indian",
+              "Other Citizens"
+            ],
+            "range": [
+              "#0072B2",
+              "#D55E00",
+              "#009E73",
+              "#E69F00",
+              "#CC79A7",
+              "#56B4E9"
+            ]
+          },
+          "sort": [
+            "Malay",
+            "Chinese",
+            "Other Bumiputera",
+            "Non Citizens",
+            "Indian",
+            "Other Citizens"
+          ]
+        },
+        "order": {"field": "ethnicity", "type": "nominal"},
+        "tooltip": [
+          {"field": "year", "type": "ordinal"},
+          {"field": "ethnicity", "type": "nominal"},
+          {"field": "population", "type": "quantitative"}
+        ]
+      }
     },
-    "y": {
-      "field": "population",
-      "type": "quantitative",
-      "stack": "zero",
-      "title": "Population (thousands)"
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {"op": "sum", "field": "population", "as": "total_population"}
+          ],
+          "groupby": ["year"]
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "color": "black",
+        "strokeWidth": 2,
+        "opacity": 0.8,
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "total_population", "type": "quantitative" }
+      }
     },
-    "color": {
-      "field": "ethnicity",
-      "type": "nominal",
-      "legend": {"title": "Ethnicity"},
-      "sort": ["Malay", "Chinese", "Other Bumiputera", "Non Citizens", "Indian", "Other Citizens"]
-    },
-    "order": {
-      "field": "ethnicity",
-      "type": "nominal",
-      "sort": ["Malay", "Chinese", "Other Bumiputera", "Non Citizens", "Indian", "Other Citizens"]
-    },
-    "tooltip": [
-      {"field": "year", "type": "ordinal"},
-      {"field": "ethnicity", "type": "nominal"},
-      {"field": "population", "type": "quantitative"}
-    ]
-  },
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {"op": "sum", "field": "population", "as": "total_population"}
+          ],
+          "groupby": ["year"]
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "color": "black",
+        "filled": true,
+        "size": 20
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "total_population", "type": "quantitative"},
+        "tooltip": [
+          {"field": "year", "title": "Year"},
+          {"field": "total_population", "title": "Total Population", "format": ".0f"}
+        ]
+      }
+    }
+  ],
   "config": {
     "background": null,
-    "view": {"stroke": null}
-  }
+    "view": {"stroke": null},
+    "legend": {"labelFontSize": 13, "titleFontSize": 14}
+  },
+  "width": 600,
+  "height": 400
 }

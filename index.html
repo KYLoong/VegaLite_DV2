@@ -71,11 +71,29 @@
       </div>
     </section>
 
+    <!-- ===== VISUALIZATION 3 ===== -->
+    <section class="chart-section">
+      <h2>Malaysia Population by Age and Sex</h2>
+      <div class="chart-row">
+        <div class="chart">
+          <div id="butterfly"></div>
+        </div>
+        <div class="description">
+          <p>
+            The population pyramid shows the distribution of <strong>male</strong> and <strong>female</strong> populations across age groups for the selected year.
+            Younger age groups are shown at the top and older age groups at the bottom. 
+            This visualization helps identify population trends such as growth in younger cohorts or aging population patterns.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== Vega Embeds ===== -->
     <script type="text/javascript">
       vegaEmbed("#map", "choropleth_map.json", { actions: false });
       vegaEmbed("#donut", "donut_chart.json", { actions: false });
       vegaEmbed("#trend", "stacked_area_chart.json", { actions: false });
+      vegaEmbed("#butterfly", "butterfly_chart.json", { actions: false });
     </script>
   </body>
 </html>
