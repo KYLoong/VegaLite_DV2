@@ -1,25 +1,25 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "State-level Natural Increase Heatmap",
+  "description": "State-level Natural Increase Rate Heatmap (2016–2025)",
   "width": 600,
   "height": 400,
   "data": {
-    "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/population_state_natural_increase_rate.csv"
+    "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/state_natural_increase_rate.csv"
   },
   "mark": "rect",
   "encoding": {
     "x": {"field": "state", "type": "ordinal", "axis": {"title": "State"}},
-    "y": {"field": "year", "type": "ordinal", "axis": {"title": "Year"}}, 
+    "y": {"field": "year", "type": "ordinal", "axis": {"title": "Year"}},
     "color": {
-      "field": "natural_increase",
+      "field": "natural_increase_rate",
       "type": "quantitative",
-      "scale": {"scheme": "reds"},
-      "legend": {"title": "Natural Increase"}
+      "scale": {"scheme": "greens"},
+      "legend": {"title": "Natural Increase Rate (%)"}
     },
     "tooltip": [
       {"field": "state", "type": "nominal"},
       {"field": "year", "type": "ordinal"},
-      {"field": "natural_increase", "type": "quantitative"}
+      {"field": "natural_increase_rate", "type": "quantitative", "format": ".2f"}
     ]
   }
 }
