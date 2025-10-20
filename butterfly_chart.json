@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Malaysia Population Pyramid (2016–2025)",
+  "description": "Malaysia Population Pyramid (2016–2025) with positive labels and 'k' suffix",
   "width": 400,
   "height": 500,
   "data": {
@@ -21,32 +21,59 @@
   "transform": [
     {"filter": "datum.year == year_selected"}
   ],
-  "mark": "bar",
-  "encoding": {
-    "y": {
-      "field": "age",
-      "type": "ordinal",
-      "sort": [
-        "0-4",
-        "15-19", "20-24", "25-29", "30-34", "35-39",
-        "40-44", "45-49", "50-54", "55-59", "60-64", "65-69", "70+"
+  "layer": [
+    {
+      "mark": {"type": "bar"},
+      "encoding": {
+        "y": {
+          "field": "age",
+          "type": "ordinal",
+          "sort": [
+            "0-4","15-19","20-24","25-29","30-34","35-39",
+            "40-44","45-49","50-54","55-59","60-64","65-69","70+"
+          ],
+          "axis": {"title": "Age Group"}
+        },
+        "x": {
+          "field": "population",
+          "type": "quantitative",
+          "axis": null
+        },
+        "color": {
+          "field": "sex",
+          "type": "nominal",
+          "scale": {"domain": ["male", "female"], "range": ["#4C78A8", "#E45756"]},
+          "legend": {"title": "Sex"}
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "calculate": "abs(datum.population) + 'k'",
+          "as": "pop_label"
+        }
       ],
-      "axis": {"title": "Age Group"}
-    },
-    "x": {
-      "field": "population",
-      "type": "quantitative",
-      "axis": {"title": "Population"}
-    },
-    "color": {
-      "field": "sex",
-      "type": "nominal",
-      "scale": {"domain": ["male", "female"], "range": ["#4C78A8", "#F28E2B"]},
-      "legend": {"title": "Sex"}
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 3,
+        "fontSize": 10
+      },
+      "encoding": {
+        "y": {"field": "age", "type": "ordinal", "sort": [
+          "0-4","15-19","20-24","25-29","30-34","35-39",
+          "40-44","45-49","50-54","55-59","60-64","65-69","70+"]},
+        "x": {"field": "population", "type": "quantitative"},
+        "text": {"field": "pop_label", "type": "nominal"},
+        "color": {"value": "black"}
+      }
     }
-  },
+  ],
   "config": {
     "view": {"stroke": "transparent"},
     "axis": {"grid": false}
   }
 }
+

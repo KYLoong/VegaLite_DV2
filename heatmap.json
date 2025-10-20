@@ -1,0 +1,25 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "State-level Population Heatmap (Both Sexes)",
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/population_state_heatmap.csv"
+  },
+  "mark": "rect",
+  "encoding": {
+    "x": {"field": "state", "type": "ordinal", "axis": {"title": "State"}},
+    "y": {"field": "year", "type": "ordinal", "axis": {"title": "Year"}},
+    "color": {
+      "field": "population",
+      "type": "quantitative",
+      "scale": {"scheme": "reds"},
+      "legend": {"title": "Population"}
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal"},
+      {"field": "year", "type": "ordinal"},
+      {"field": "population", "type": "quantitative"}
+    ]
+  }
+}
