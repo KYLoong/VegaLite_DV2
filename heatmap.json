@@ -1,25 +1,25 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "State-level Population Heatmap (Both Sexes)",
+  "description": "State-level Natural Increase Heatmap",
   "width": 600,
   "height": 400,
   "data": {
-    "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/population_state_heatmap.csv"
+    "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/population_state_natural_increase.csv"
   },
   "mark": "rect",
   "encoding": {
     "x": {"field": "state", "type": "ordinal", "axis": {"title": "State"}},
     "y": {"field": "year", "type": "ordinal", "axis": {"title": "Year"}},
     "color": {
-      "field": "population",
+      "field": "natural_increase",
       "type": "quantitative",
-      "scale": {"scheme": "reds"},
-      "legend": {"title": "Population"}
+      "scale": {"scheme": "greens"},
+      "legend": {"title": "Natural Increase"}
     },
     "tooltip": [
       {"field": "state", "type": "nominal"},
       {"field": "year", "type": "ordinal"},
-      {"field": "population", "type": "quantitative"}
+      {"field": "natural_increase", "type": "quantitative"}
     ]
   }
 }
