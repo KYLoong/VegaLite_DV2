@@ -4,12 +4,12 @@
   "width": 600,
   "height": 400,
   "data": {
-    "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/natural_increase_population_state.csv"
+    "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/population_state_natural_increase.csv"
   },
   "mark": "rect",
   "encoding": {
-    "x": {"field": "year", "type": "ordinal", "axis": {"title": "Year"}}, 
-    "y": {"field": "state", "type": "ordinal", "axis": {"title": "State"}},
+    "x": {"field": "state", "type": "ordinal", "axis": {"title": "State"}},
+    "y": {"field": "year", "type": "ordinal", "axis": {"title": "Year"}}, 
     "color": {
       "field": "natural_increase",
       "type": "quantitative",
