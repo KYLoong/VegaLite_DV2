@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Malaysia Population Pyramid (2016–2025)",
+  "width": 400,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/cleaned_sex_group.csv"
+  },
+  "params": [
+    {
+      "name": "year_selected",
+      "value": 2025,
+      "bind": {
+        "input": "select",
+        "options": [2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],
+        "labels": ["2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"],
+        "name": "Select Year: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.year == year_selected"}
+  ],
+  "mark": "bar",
+  "encoding": {
+    "y": {
+      "field": "age",
+      "type": "ordinal",
+      "sort": [
+        "0-4",
+        "15-19", "20-24", "25-29", "30-34", "35-39",
+        "40-44", "45-49", "50-54", "55-59", "60-64", "65-69", "70+"
+      ],
+      "axis": {"title": "Age Group"}
+    },
+    "x": {
+      "field": "population",
+      "type": "quantitative",
+      "axis": {"title": "Population"}
+    },
+    "color": {
+      "field": "sex",
+      "type": "nominal",
+      "scale": {"domain": ["male", "female"], "range": ["#4C78A8", "#F28E2B"]},
+      "legend": {"title": "Sex"}
+    }
+  },
+  "config": {
+    "view": {"stroke": "transparent"},
+    "axis": {"grid": false}
+  }
+}

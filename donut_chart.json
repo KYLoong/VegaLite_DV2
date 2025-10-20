@@ -22,7 +22,7 @@
   ],
   "mark": {
     "type": "arc",
-    "innerRadius": 150
+    "innerRadius": 100
   },
   "encoding": {
     "theta": { "field": "population", "type": "quantitative" },
