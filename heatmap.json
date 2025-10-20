@@ -4,7 +4,7 @@
   "width": 600,
   "height": 400,
   "data": {
-    "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/state_natural_increase_rate.csv"
+    "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/natural_increase_rate.csv"
   },
   "mark": "rect",
   "encoding": {
