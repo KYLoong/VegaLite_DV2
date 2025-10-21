@@ -4,19 +4,16 @@
     <meta charset="UTF-8" />
     <title>Malaysia Population Dashboard (2025)</title>
 
-    <!-- Vega Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
-    <!-- External CSS -->
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <h1>Malaysia Population Dashboard (2025)</h1>
 
-    <!-- ===== MAP SECTION ===== -->
     <section class="chart-section full-width">
       <h2>Population Density by State</h2>
       <div class="chart-full">
@@ -36,7 +33,6 @@
       </div>
     </section>
 
-    <!-- ===== VISUALIZATION 1 ===== -->
     <section class="chart-section">
       <h2>Population by Ethnicity in Malaysia (2016–2025)</h2>
       <div class="chart-row">
@@ -53,7 +49,6 @@
       </div>
     </section>
 
-    <!-- ===== VISUALIZATION 2 ===== -->
     <section class="chart-section alt">
       <h2>Population Trend by Ethnicity (2016–2025)</h2>
       <div class="chart-row">
@@ -71,7 +66,6 @@
       </div>
     </section>
 
-    <!-- ===== VISUALIZATION 3 ===== -->
     <section class="chart-section">
       <h2>Malaysia Population by Age and Sex</h2>
       <div class="chart-row">
@@ -80,15 +74,13 @@
         </div>
         <div class="description">
           <p>
-            The population pyramid shows the distribution of <strong>male</strong> and <strong>female</strong> populations across age groups for the selected year.
-            Younger age groups are shown at the top and older age groups at the bottom. 
-            This visualization helps identify population trends such as growth in younger cohorts or aging population patterns.
+            The population pyramid shows the distribution of <strong>male</strong> and <strong>female</strong> populations are shift to intermediate form.
+            This show life expectanty improved.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- ===== Vega Embeds ===== -->
     <script type="text/javascript">
       vegaEmbed("#map", "choropleth_map.json", { actions: false });
       vegaEmbed("#donut", "donut_chart.json", { actions: false });
