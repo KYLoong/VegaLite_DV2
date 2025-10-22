@@ -55,8 +55,8 @@
           "legend": {
             "orient": "right",
             "title": "Ethnicity",
-            "offset": -20
-          }
+            "offset": 20
+          } 
         },
         "tooltip": [
           { "field": "ethnicity", "title": "Ethnicity" },
@@ -111,7 +111,7 @@
         "fontSize": 18,
         "fontWeight": "bold",
         "color": "#000000",
-        "x": 550,
+        "x": 450,
         "y": 300
       },
       "encoding": {
@@ -130,7 +130,7 @@
       "titleColor": "#4a3b0b"
     }
   },
-  "width": 600,
+  "width": 400,
   "height": 400
 }
 

@@ -1,13 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Malaysia Population Pyramid (2016–2025) with labels aligned at end of bars",
   "width": 400,
   "height": 450,
   "data": {
     "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/cleaned_sex_group.csv"
   },
   "params": [
-    {
+    { 
       "name": "year_selected",
       "value": 2025,
       "bind": {
@@ -41,7 +40,8 @@
             "title": "Sex",
             "labelFontSize": 12,
             "titleFontSize": 14,
-            "symbolSize": 100
+            "symbolSize": 100,  
+            "offset": -40
           }
         } 
       }
