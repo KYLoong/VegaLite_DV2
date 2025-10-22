@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Malaysia Population Pyramid (2016–2025) with positive labels and 'k' suffix",
+  "description": "Malaysia Population Pyramid (2016–2025) with labels aligned at end of bars",
   "width": 400,
-  "height": 500,
+  "height": 450,
   "data": {
     "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/data/cleaned_sex_group.csv"
   },
@@ -18,9 +18,7 @@
       }
     }
   ],
-  "transform": [
-    {"filter": "datum.year == year_selected"}
-  ],
+  "transform": [{"filter": "datum.year == year_selected"}],
   "layer": [
     {
       "mark": {"type": "bar"},
@@ -34,40 +32,46 @@
           ],
           "axis": {"title": "Age Group"}
         },
-        "x": {
-          "field": "population",
-          "type": "quantitative",
-          "axis": null
-        },
+        "x": {"field": "population", "type": "quantitative", "axis": null},
         "color": {
           "field": "sex",
           "type": "nominal",
           "scale": {"domain": ["male", "female"], "range": ["#4C78A8", "#E45756"]},
-          "legend": {"title": "Sex"}
-        }
+          "legend": {
+            "title": "Sex",
+            "labelFontSize": 12,
+            "titleFontSize": 14,
+            "symbolSize": 100
+          }
+        } 
       }
     },
     {
       "transform": [
+        {"calculate": "abs(datum.population) + 'k'", "as": "pop_label"},
         {
-          "calculate": "abs(datum.population) + 'k'",
-          "as": "pop_label"
+          "calculate": "datum.population < 0 ? datum.population * 0.98 : datum.population * 0.98",
+          "as": "label_x"
         }
       ],
       "mark": {
         "type": "text",
-        "align": "left",
+        "align": {"expr": "datum.population < 0 ? 'left' : 'right'"},
         "baseline": "middle",
-        "dx": 3,
-        "fontSize": 10
+        "fontSize": 10,
+        "color": "black"
       },
       "encoding": {
-        "y": {"field": "age", "type": "ordinal", "sort": [
-          "0-4","15-19","20-24","25-29","30-34","35-39",
-          "40-44","45-49","50-54","55-59","60-64","65-69","70+"]},
-        "x": {"field": "population", "type": "quantitative"},
-        "text": {"field": "pop_label", "type": "nominal"},
-        "color": {"value": "black"}
+        "y": {
+          "field": "age",
+          "type": "ordinal",
+          "sort": [
+            "0-4","15-19","20-24","25-29","30-34","35-39",
+            "40-44","45-49","50-54","55-59","60-64","65-69","70+"
+          ]
+        },
+        "x": {"field": "label_x", "type": "quantitative"},
+        "text": {"field": "pop_label"}
       }
     }
   ],
@@ -77,4 +81,5 @@
     "background": null
   }
 }
+
 

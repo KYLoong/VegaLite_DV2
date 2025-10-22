@@ -2,14 +2,23 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 1000,
   "height": 400,
-  "projection": {"type": "mercator"},
+  "projection": {
+    "type": "mercator",
+    "center": [110, 4],
+    "scale": 2500
+  },
   "layer": [
     {
       "data": {
         "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/malaysia_graticule_10.json",
-        "format": {"type": "topojson", "feature": "graticule"}
+        "format": { "type": "topojson", "feature": "graticule" }
       },
-      "mark": {"type": "geoshape", "stroke": "#000000", "strokeWidth": 0.5}
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#cccccc",
+        "strokeWidth": 0.8,
+        "opacity": 0.6
+      }
     },
     {
       "data": {
@@ -31,16 +40,16 @@
           }
         }
       ],
-      "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 0.5},
+      "mark": { "type": "geoshape", "stroke": "white", "strokeWidth": 0.5 },
       "encoding": {
         "color": {
           "field": "population_density",
           "type": "quantitative",
           "title": "Population Density",
-          "scale": {"type": "log", "scheme": "blues"}
+          "scale": { "type": "log", "scheme": "blues" }
         },
         "tooltip": [
-          {"field": "properties.name", "type": "nominal", "title": "State"},
+          { "field": "properties.name", "type": "nominal", "title": "State" },
           {
             "field": "population_density",
             "type": "quantitative",
@@ -54,9 +63,9 @@
       "data": {
         "values": [
           {
-            "longitude": 108.5,
+            "longitude": 109.5,
             "latitude": 6.0,
-            "text": "Peninsular Malaysia is denser,\nwhile East Malaysia is more sparse."
+            "text": "Population of West Malaysia is denser, East Malaysia is more sparse"
           }
         ]
       },
@@ -71,14 +80,14 @@
         "dy": 0
       },
       "encoding": {
-        "longitude": {"field": "longitude", "type": "quantitative"},
-        "latitude": {"field": "latitude", "type": "quantitative"},
-        "text": {"field": "text"}
+        "longitude": { "field": "longitude", "type": "quantitative" },
+        "latitude": { "field": "latitude", "type": "quantitative" },
+        "text": { "field": "text" }
       }
     }
   ],
   "config": {
-    "view": {"stroke": "transparent"},
+    "view": { "stroke": "transparent" },
     "background": null
   }
 }

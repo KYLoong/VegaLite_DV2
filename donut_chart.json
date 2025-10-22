@@ -55,15 +55,14 @@
           "legend": {
             "orient": "right",
             "title": "Ethnicity",
-            "offset": 30
+            "offset": -20
           }
         },
-        "order": { "field": "population"},
         "tooltip": [
-          { "field": "ethnicity", "type": "nominal", "title": "Ethnicity" },
-          { "field": "population", "type": "quantitative", "format": ",", "title": "Population" },
-          { "field": "percentage", "type": "quantitative", "format": ".1f", "title": "Percentage (%)"},
-          { "field": "year", "type": "quantitative", "title": "Year" }
+          { "field": "ethnicity", "title": "Ethnicity" },
+          { "field": "population", "format": ",", "title": "Population" },
+          { "field": "percentage", "format": ".1f", "title": "Percentage (%)" },
+          { "field": "year", "title": "Year" }
         ]
       }
     },
@@ -95,11 +94,29 @@
             "dy": 10,
             "color": "#0072B2"
           },
-          "encoding": {
-            "text": { "field": "total_k", "type": "nominal" }
-          }
+          "encoding": { "text": { "field": "total_k" } }
         }
       ]
+    },
+    {
+      "transform": [
+        { "filter": "datum.ethnicity == 'Malay'" },
+        {
+          "calculate": "'Malay: ' + format(datum.percentage, '.1f') + '%'",
+          "as": "malay_label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 18,
+        "fontWeight": "bold",
+        "color": "#000000",
+        "x": 550,
+        "y": 300
+      },
+      "encoding": {
+        "text": { "field": "malay_label" }
+      }
     }
   ],
   "config": {
@@ -109,11 +126,11 @@
       "labelFontSize": 12,
       "titleFontSize": 13,
       "symbolSize": 150,
-      "labelColor": "#333333",
-      "titleColor": "#000000"
+      "labelColor": "#4a3b0b",
+      "titleColor": "#4a3b0b"
     }
   },
   "width": 600,
-  "height": 400,
-  "autosize": { "type": "fit", "contains": "padding" }
+  "height": 400
 }
+

@@ -1,29 +1,45 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  font-family: "Georgia", serif;
+  background-color: #fffbea;
   margin: 40px;
   color: #333;
+  line-height: 1.7;
 }
 
 h1 {
   text-align: center;
   margin-bottom: 60px;
-  color: #222;
+  color: #6b4e16;
+  font-size: 40px;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 3px rgba(107, 78, 22, 0.2);
 }
+
 
 .chart-section h2 {
   text-align: center;
   margin-bottom: 30px;
-  color: #333;
+  color: #a67c00; 
   font-size: 24px;
+  border-bottom: 2px solid #d8b84f;
+  display: inline-block;
+  padding-bottom: 5px;
 }
 
 .chart-section {
   margin-bottom: 100px;
+  background-color: #fffdf3; 
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
 }
 
 .full-width {
   text-align: center;
+  background-color: #fffdf3;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
 }
 
 .chart-full {
@@ -34,54 +50,51 @@ h1 {
 #map {
   width: 100%;
   height: 500px;
+  border-radius: 10px;
+}
+
+.description-wide,
+.description {
+  font-size: 16px;
+  color: #4a3b0b;
+  text-align: justify;
+  background-color: #fffdf3;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
 .description-wide {
   max-width: 900px;
   margin: 20px auto 0;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #444;
-  text-align: justify;
 }
 
 .chart-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 100px;
+  gap: 80px;
   margin-top: 30px;
   flex-direction: row;
 }
 
 .chart-section.alt .chart-row {
-  flex-direction: row-reverse; 
-  gap: 100px
+  flex-direction: row-reverse;
+  gap: 80px;
 }
-
 
 .chart {
   flex: 1;
   max-width: 700px;
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 10px;
 }
 
 #donut,
-#butterfly
-{
-  width: 90%;
-  height: 450px;
-}
-
+#butterfly,
 #trend {
   width: 90%;
   height: 450px;
-}
-
-.description {
-  flex: 1;
-  max-width: 500px;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #444;
-  text-align: justify;
 }
