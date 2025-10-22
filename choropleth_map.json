@@ -6,7 +6,7 @@
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/malaysia_graticule.json",
+        "url": "https://raw.githubusercontent.com/KYLoong/VEGALITE_DV2/main/malaysia_graticule_10.json",
         "format": {"type": "topojson", "feature": "graticule"}
       },
       "mark": {"type": "geoshape", "stroke": "#000000", "strokeWidth": 0.5}
@@ -31,11 +31,7 @@
           }
         }
       ],
-      "mark": {
-        "type": "geoshape",
-        "stroke": "white",
-        "strokeWidth": 0.5
-      },
+      "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 0.5},
       "encoding": {
         "color": {
           "field": "population_density",
@@ -53,6 +49,32 @@
           }
         ]
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "longitude": 108.5,
+            "latitude": 6.0,
+            "text": "Peninsular Malaysia is denser,\nwhile East Malaysia is more sparse."
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "fontSize": 14,
+        "fontWeight": "normal",
+        "color": "#333",
+        "dx": 0,
+        "dy": 0
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "text": {"field": "text"}
+      }
     }
   ],
   "config": {
@@ -60,3 +82,4 @@
     "background": null
   }
 }
+
