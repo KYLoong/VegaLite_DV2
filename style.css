@@ -98,3 +98,36 @@ h1 {
   width: 90%;
   height: 450px;
 }
+
+
+.footer {
+  text-align: left;
+  margin-top: 60px;
+  padding: 30px 0;
+  background-color: #fffdf3;
+  border-top: 2px solid #d8b84f;
+  font-size: 15px;
+  color: #6b4e16;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+  line-height: 1.8;
+}
+
+.footer strong {
+  color: #a67c00;
+}
+
+.footer .data-sources {
+  margin-top: 8px;
+  display: inline-block;
+  text-align: left;
+}
+
+.footer .data-sources ul {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+}
+
+.footer .data-sources li {
+  margin: 2px 0;
+}
